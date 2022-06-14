@@ -1,10 +1,25 @@
+require("express-async-errors");
+
+const AppError = require("./utils/AppError");
 const express = require("express");
 
-const app = express();
+const routes = require("./routes");
 
-// get faz a leitura, neste caso o / e a rota da url, e o res é a reposta, q no caso ali vai aparecer na tela o hello word.
-app.get("/", (req, res) => {
-  res.send("Hello, word!");
+const app = express();
+app.use(express.json());
+app.use(routes);
+
+app.use((error, req, res, next) => {
+  if (error instanceof AppError) {
+    return res.status(error.statusCode).json({
+      status: "error",
+      message: error.message,
+    });
+  }
+  return res.status(500).json({
+    status: "error",
+    message: "Internal server error",
+  });
 });
 
 const PORT = 3333;
