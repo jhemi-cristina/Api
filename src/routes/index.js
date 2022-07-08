@@ -5,11 +5,11 @@ const notesRouter = require("./notes.routes");
 const tagsRouter = require("./tags.routes");
 const sessionsRouter = require("./sessions.routes");
 
-const routes = Router();
+const router = Router();
 
-routes.use("/users", usersRouter);
-routes.use("/notes", notesRouter);
-routes.use("/tags", tagsRouter);
-routes.use("/sessions", sessionsRouter);
+router.use("/users", usersRouter);
+router.use("/notes", notesRouter);
+router.use("/tags", tagsRouter);
+router.use("/sessions", sessionsRouter);
 
-module.exports = routes;
+module.exports = router;
