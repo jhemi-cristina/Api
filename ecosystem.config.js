@@ -1,8 +1,8 @@
 module.exports = {
   apps: [
     {
-      name: "api",
-      script: "./server.js",
+      name: "app",
+      script: "./src/server.js",
       env: {
         NODE_ENV: "development",
       },
